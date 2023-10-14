@@ -71,7 +71,6 @@ async function deleteDockerVolumes(volumes: string[]): Promise<void> {
 }
 
 new Command()
-  .command("dockern")
   .description("Manage docker images and volumes.")
   .action(async () => {
     let selectedImages: string[] = [];
@@ -132,7 +131,7 @@ new Command()
       console.log("Deletion cancelled.");
     }
   })
-  .command("guru2dockern")
+  .command("guru2")
   .description("たのしくなっちゃうなぁ🎺")
   .action(() => {
     console.log("ぐるぐるぐるぐるどっかーん🎺");
