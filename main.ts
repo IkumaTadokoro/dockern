@@ -174,4 +174,9 @@ new Command()
       console.log("Deletion cancelled.");
     }
   })
+  .command("guru2dockern")
+  .description("たのしくなっちゃうなぁ🎺")
+  .action(() => {
+    console.log("ぐるぐるぐるぐるどっかーん🎺");
+  })
   .parse(Deno.args);
