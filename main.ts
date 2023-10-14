@@ -71,48 +71,6 @@ async function deleteDockerVolumes(volumes: string[]): Promise<void> {
 }
 
 new Command()
-  .command("prune-images")
-  .description("List and delete selected docker images.")
-  .action(async () => {
-    const images = await listDockerImages();
-    if (images.length === 0) {
-      console.log("No images found.");
-      return;
-    }
-
-    const selectedImages = await Checkbox.prompt<string>({
-      message: "Select images to delete",
-      options: images.map((image) => ({ name: image, value: image })),
-    });
-
-    console.log("Selected images for deletion:", selectedImages.join(", "));
-
-    if (selectedImages.length > 0) {
-      await deleteDockerImages(selectedImages);
-    } else {
-      console.log("No images selected for deletion.");
-    }
-  })
-  .command("prune-volumes")
-  .description("List and delete selected docker volumes.")
-  .action(async () => {
-    const volumes = await listDockerVolumes();
-    if (volumes.length === 0) {
-      console.log("No volumes found.");
-      return;
-    }
-
-    const selectedVolumes = await Checkbox.prompt<string>({
-      message: "Select volumes to delete",
-      options: volumes.map((volume) => ({ name: volume, value: volume })),
-    }) as string[];
-
-    if (selectedVolumes.length > 0) {
-      await deleteDockerVolumes(selectedVolumes);
-    } else {
-      console.log("No volumes selected for deletion.");
-    }
-  })
   .command("dockern")
   .description("Manage docker images and volumes.")
   .action(async () => {
